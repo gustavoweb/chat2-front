@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io(
     window.location.origin.includes("onrender.com")
-      ? "https://vercel.com/gustavowebs-projects/chat2-back" // URL do servidor em produção
+      ? "https://chat2-back-kpu2mfmpb-gustavowebs-projects.vercel.app" // Substitua pela URL pública correta
       : "http://localhost:3000" // URL do servidor local
   );
 
