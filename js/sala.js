@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io(
-    window.location.origin.includes("github.io")
-      ? "https://gustavoweb.github.io/chat2-front" // URL do servidor em produção
+    window.location.origin.includes("onrender.com")
+      ? "https://chat2-front.onrender.com" // URL do servidor em produção
       : "http://localhost:3000" // URL do servidor local
   );
 
