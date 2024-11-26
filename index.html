@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escolha Personagem e Sala</title>
+    <style>
+      .selected {
+        border: 3px solid blue;
+        border-radius: 10px;
+      }
+      .container {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .container img {
+        cursor: pointer;
+        width: 100px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Escolha seu Personagem e Sala</h1>
+
+    <div>
+      <h2>Personagens</h2>
+      <div id="personagens" class="container"></div>
+    </div>
+
+    <div>
+      <h2>Salas</h2>
+      <div id="salas" class="container"></div>
+      <input type="text" id="nickname" placeholder="Digite seu nick" />
+    </div>
+
+    <button id="entrar">Entrar</button>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>

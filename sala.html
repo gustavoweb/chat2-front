@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sala</title>
+    <link rel="stylesheet" href="./css/sala.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/personagens/pikachu1.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div id="sala-container">
+      <div id="personagem-container"></div>
+    </div>
+    <div id="chat-container">
+      <div id="chat-box"></div>
+      <input type="text" id="chat" placeholder="Digite sua mensagem" />
+      <button id="sendBtn">GO!</button>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="./js/sala.js"></script>
+  </body>
+</html>
