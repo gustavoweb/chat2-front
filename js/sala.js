@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const socket = io("http://localhost:3000");
+  const socket = io(
+    window.location.origin.includes("github.io")
+      ? "https://gustavoweb.github.io/chat2-front" // URL do servidor em produção
+      : "http://localhost:3000" // URL do servidor local
+  );
 
   // Recupera IDs do personagem, sala e nickname do localStorage
   const personagemId = localStorage.getItem("personagem");
@@ -53,16 +57,41 @@ document.addEventListener("DOMContentLoaded", () => {
   personagemImg.style.left = `${personagemPos.x}%`;
   personagemImg.style.top = `${personagemPos.y}%`;
 
-  salaContainer.addEventListener("click", (e) => {
-    const rect = salaContainer.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
+  const moveCharacter = (x, y) => {
     personagemPos = { x, y };
     personagemImg.style.left = `${x}%`;
     personagemImg.style.top = `${y}%`;
 
     socket.emit("move", { x, y, personagemId: personagemAtual.id, nickname });
+  };
+
+  // salaContainer.addEventListener("click", (e) => {
+  //   const rect = salaContainer.getBoundingClientRect();
+  //   const x = ((e.clientX - rect.left) / rect.width) * 100;
+  //   const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  //   personagemPos = { x, y };
+  //   personagemImg.style.left = `${x}%`;
+  //   personagemImg.style.top = `${y}%`;
+
+  //   socket.emit("move", { x, y, personagemId: personagemAtual.id, nickname });
+  // });
+
+  // Evento de clique
+  salaContainer.addEventListener("click", (e) => {
+    const rect = salaContainer.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    moveCharacter(x, y);
+  });
+
+  // Evento de toque (suporte ao mobile)
+  salaContainer.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    const rect = salaContainer.getBoundingClientRect();
+    const x = ((touch.clientX - rect.left) / rect.width) * 100;
+    const y = ((touch.clientY - rect.top) / rect.height) * 100;
+    moveCharacter(x, y);
   });
 
   socket.on("updateUsers", (users) => {
