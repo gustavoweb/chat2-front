@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const socket = io(
     window.location.origin.includes("onrender.com")
-      ? "https://chat2-back-kpu2mfmpb-gustavowebs-projects.vercel.app"
+      ? "https://chat2-back.onrender.com"
       : "http://localhost:3000"
   );
 
