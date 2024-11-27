@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const socket = io(
     window.location.origin.includes("onrender.com")
       ? "https://chat2-back-kpu2mfmpb-gustavowebs-projects.vercel.app"
-      : "http://localhost:3000",
-    { transports: ["websocket"] } // Força o uso de WebSocket
+      : "http://localhost:3000"
   );
 
   // Recupera IDs do personagem, sala e nickname do localStorage
